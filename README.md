@@ -90,7 +90,7 @@ if gpus:
 ```
 ---
 
-## Conclusion
+## Kudos! 
 
 If everything is set up correctly, you should see details about your GPU in the output. Now, you're ready to start training deep learning models with GPU acceleration!
 
