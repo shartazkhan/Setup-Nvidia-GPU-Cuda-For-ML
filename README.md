@@ -48,7 +48,7 @@ Download and install cuDNN, which is required for deep learning frameworks to us
 
 ---
 
-## Step 6: Install PyTorch
+## Step 6.1: Install PyTorch
 
 Install PyTorch with CUDA support by following the instructions on the official website.
 
@@ -56,10 +56,18 @@ Install PyTorch with CUDA support by following the instructions on the official 
 
 ---
 
-## Step 7: Verify GPU Installation
+## Step 6.2: Install TensorFlow
 
+Install TensorFlow with GPU support by following the instructions on the official website.
+
+- [Install TensorFlow](https://www.tensorflow.org/install)
+
+---
+
+## Step 7: Verify Cuda is working
 Run the following Python script to check if your GPU is properly set up for deep learning:
 
+For PyTorch
 ```python
 import torch
 
@@ -69,7 +77,17 @@ print("GPU Name:", torch.cuda.get_device_name(0))
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print('Using device:', device)
 ```
+For TensorFlow
+```python
+import tensorflow as tf
 
+print("Num GPUs Available:", len(tf.config.experimental.list_physical_devices('GPU')))
+
+gpus = tf.config.experimental.list_physical_devices('GPU')
+if gpus:
+    print("GPU Name:", gpus[0])
+    tf.config.experimental.set_memory_growth(gpus[0], True)
+```
 ---
 
 ## Conclusion
